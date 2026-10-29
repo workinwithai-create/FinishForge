@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>FinishForge – Finish the Loop</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body { font-family: system-ui, sans-serif; background:#111; color:#eee; margin:0; padding:20px; }
+header { text-align:center; margin-bottom:20px; }
+h1 { margin:0; font-size:2rem; }
+.controls { display:flex; gap:12px; flex-wrap:wrap; justify-content:center; margin:12px 0; }
+label { display:flex; flex-direction:column; font-size:0.85rem; }
+input, select, button { padding:8px; background:#222; color:#eee; border:1px solid #444; border-radius:4px; }
+button { cursor:pointer; background:#0a7; }
+button:disabled { opacity:0.5; }
+.grid { display:grid; grid-template-columns:repeat(16,1fr); gap:2px; margin:8px 0; }
+.step { height:28px; background:#333; border-radius:2px; }
+.step.on { background:#0af; }
+.chair { margin:12px 0; padding:12px; background:#1a1a1a; border-radius:8px; }
+.chair h3 { margin:0 0 8px; display:flex; justify-content:space-between; }
+.muted { opacity:0.4; }
+#status { text-align:center; margin:8px; color:#8f8; }
+#playhead { height:4px; background:#0af; width:0; transition:none; }
+footer { margin-top:30px; font-size:0.8rem; color:#888; text-align:center; }
+</style>
+</head>
+<body>
+<header>
+  <h1>FinishForge</h1>
+  <p>Break the 8-bar loop. Build a finished 32-bar structure with live instruments. Export DAW-ready WAV + MIDI.</p>
+</header>
+<div id="status">Tap any control to start audio</div>
+<div class="controls">
+  <label>BPM <input type="number" id="bpm" min="60" max="180" value="92"></label>
+  <label>Key <select id="key"><option>C</option><option>C#</option><option>D</option><option>D#</option><option>E</option><option>F</option><option>F#</option><option>G</option><option>G#</option><option>A</option><option>A#</option><option>B</option></select></label>
+  <label>Bars <input type="number" id="bars" min="4" max="64" value="32"></label>
+  <button id="play">Play</button>
+  <button id="stop">Stop</button>
+  <button id="export">Export WAV + MIDI</button>
+</div>
+<div class="controls">
+  <label>Chord 1 <input id="c1" value="Am"></label>
+  <label>Chord 2 <input id="c2" value="F"></label>
+  <label>Chord 3 <input id="c3" value="C"></label>
+  <label>Chord 4 <input id="c4" value="G"></label>
+</div>
+<div id="playhead"></div>
+<div id="chairs"></div>
+<footer>
+  <p>Free for personal use. One-time $29 recommended for commercial. Sell on Gumroad or Lemon Squeezy.</p>
+  <p>Live instruments: synthesized drums, bass, keys, pad (honest Web Audio voices). Samples not required for MVP. Follows WorkinWithAI audio engine rules.</p>
+  <p>iOS: silent switch mutes Web Audio. Hardware MIDI supported for playable mode.</p>
+</footer>
+<script src="app.js"></script>
+</body>
+</html>
